@@ -3,9 +3,10 @@ import { Routes, Route, useLocation } from "react-router-dom";
 import Login from "../pages/Login";
 import Signup from "../pages/Signup";
 import Home from "../pages/Home";
-import Dashboard from "../pages/Dashboard";
 import Navbar from "../components/Navbar";
 import ProtectedRoute from "../components/ProtectedRoute";
+import Profile from "../pages/Profile";
+import Search from "../pages/Search";
 
 const AppRoutes = () => {
   const location = useLocation();
@@ -19,13 +20,14 @@ const AppRoutes = () => {
       {shouldShowNavbar && <Navbar />}
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/search" element={<Search />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
         <Route
-          path="/dashboard"
+          path="/profile"
           element={
             <ProtectedRoute>
-              <Dashboard />
+              <Profile />
             </ProtectedRoute>
           }
         />
