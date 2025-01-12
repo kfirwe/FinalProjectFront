@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import PostCard from "../components/PostCard";
+import axiosInstance from "../instances/axiosInstance";
 
 interface Post {
   id: string;
@@ -21,13 +22,16 @@ const Search = () => {
 
   const handleSearch = async () => {
     try {
-      const response = await axios.get("http://localhost:5000/api/posts", {
-        params: {
-          query,
-          minPrice: minPrice === "" ? undefined : minPrice,
-          maxPrice: maxPrice === "" ? undefined : maxPrice,
-        },
-      });
+      const response = await axiosInstance.get(
+        "http://localhost:5000/api/posts",
+        {
+          params: {
+            query,
+            minPrice: minPrice === "" ? undefined : minPrice,
+            maxPrice: maxPrice === "" ? undefined : maxPrice,
+          },
+        }
+      );
       setPosts(response.data.posts);
       setError(null);
     } catch (err: unknown) {

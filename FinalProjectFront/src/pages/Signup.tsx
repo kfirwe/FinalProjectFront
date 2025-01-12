@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import axios from "axios";
+import axiosInstance from "../instances/axiosInstance";
 
 const Signup = () => {
   const [name, setName] = useState("");
@@ -24,7 +25,7 @@ const Signup = () => {
 
     try {
       // Make API call to the backend
-      const response = await axios.post(
+      const response = await axiosInstance.post(
         "http://localhost:5000/api/auth/register",
         {
           name,

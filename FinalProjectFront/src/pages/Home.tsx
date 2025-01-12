@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import PostCard from "../components/PostCard";
+import axiosInstance from "../instances/axiosInstance";
 
 interface Post {
   id: string;
@@ -19,7 +20,9 @@ const Home = () => {
   useEffect(() => {
     const fetchPosts = async () => {
       try {
-        const response = await axios.get("http://localhost:5000/api/posts");
+        const response = await axiosInstance.get(
+          "http://localhost:5000/api/posts"
+        );
         setPosts(response.data.posts);
       } catch (err: unknown) {
         if (axios.isAxiosError(err)) {

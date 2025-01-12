@@ -2,6 +2,7 @@ import React, { useState, useContext } from "react";
 import axios from "axios";
 import { AuthContext } from "../context/AuthContext";
 import { useNavigate } from "react-router-dom";
+import axiosInstance from "../instances/axiosInstance";
 
 const CreatePost = () => {
   const { token } = useContext(AuthContext) || {};
@@ -54,7 +55,7 @@ const CreatePost = () => {
     if (image) formData.append("image", image);
 
     try {
-      await axios.post("http://localhost:5000/api/posts/", formData, {
+      await axiosInstance.post("http://localhost:5000/api/posts/", formData, {
         headers: {
           Authorization: `Bearer ${token}`,
           "Content-Type": "multipart/form-data",

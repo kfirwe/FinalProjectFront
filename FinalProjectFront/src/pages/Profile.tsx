@@ -4,6 +4,7 @@ import { AuthContext } from "../context/AuthContext";
 import { FaEdit } from "react-icons/fa";
 import PostCard from "../components/PostCard";
 import "./Profile.css";
+import axiosInstance from "../instances/axiosInstance";
 
 interface UserProfile {
   email: string;
@@ -36,9 +37,12 @@ const Profile = () => {
   useEffect(() => {
     const fetchProfile = async () => {
       try {
-        const response = await axios.get("http://localhost:5000/api/users/", {
-          headers: { Authorization: `Bearer ${token}` },
-        });
+        const response = await axiosInstance.get(
+          "http://localhost:5000/api/users/",
+          {
+            headers: { Authorization: `Bearer ${token}` },
+          }
+        );
         setProfile(response.data);
       } catch (err: unknown) {
         if (axios.isAxiosError(err)) {
@@ -51,7 +55,7 @@ const Profile = () => {
 
     const fetchPosts = async () => {
       try {
-        const response = await axios.get(
+        const response = await axiosInstance.get(
           "http://localhost:5000/api/users/posts",
           {
             headers: { Authorization: `Bearer ${token}` },
@@ -69,7 +73,7 @@ const Profile = () => {
 
     const fetchLikedPosts = async () => {
       try {
-        const response = await axios.get(
+        const response = await axiosInstance.get(
           "http://localhost:5000/api/users/liked-posts",
           {
             headers: { Authorization: `Bearer ${token}` },
@@ -97,7 +101,7 @@ const Profile = () => {
   const handleEditField = async (field: string) => {
     try {
       const updatedData = { [field]: editedValue };
-      const response = await axios.put(
+      const response = await axiosInstance.put(
         "http://localhost:5000/api/users/",
         updatedData,
         {
@@ -122,7 +126,7 @@ const Profile = () => {
     formData.append("profileImage", selectedImage);
 
     try {
-      const response = await axios.put(
+      const response = await axiosInstance.put(
         "http://localhost:5000/api/users/upload-image",
         formData,
         {

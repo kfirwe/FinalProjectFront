@@ -10,22 +10,22 @@ import Search from "../pages/Search";
 import CreatePost from "../pages/CreatePost";
 
 const AppRoutes = () => {
-  // const location = useLocation();
-
-  // Hide Navbar on these routes
-  // const hideNavbarRoutes = ["/login", "/signup"];
-  // const shouldShowNavbar = !hideNavbarRoutes.includes(location.pathname);
-
   return (
     <>
-      {/* {shouldShowNavbar && <Navbar />} */}
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/search" element={<Search />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
-        <Route path="/create-post" element={<CreatePost />} />
+        <Route
+          path="/create-post"
+          element={
+            <ProtectedRoute>
+              <CreatePost />
+            </ProtectedRoute>
+          }
+        />
         <Route
           path="/profile"
           element={

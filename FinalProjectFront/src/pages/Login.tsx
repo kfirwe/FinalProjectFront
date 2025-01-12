@@ -2,6 +2,7 @@ import React, { useState, useContext } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { AuthContext } from "../context/AuthContext";
 import axios from "axios";
+import axiosInstance from "../instances/axiosInstance";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -16,7 +17,7 @@ const Login = () => {
 
     try {
       // Make API call to login endpoint
-      const response = await axios.post(
+      const response = await axiosInstance.post(
         "http://localhost:5000/api/auth/login",
         {
           email,
