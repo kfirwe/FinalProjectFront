@@ -7,6 +7,7 @@ import Navbar from "../components/Navbar";
 import ProtectedRoute from "../components/ProtectedRoute";
 import Profile from "../pages/Profile";
 import Search from "../pages/Search";
+import CreatePost from "../pages/CreatePost";
 
 const AppRoutes = () => {
   // const location = useLocation();
@@ -24,6 +25,7 @@ const AppRoutes = () => {
         <Route path="/search" element={<Search />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
+        <Route path="/create-post" element={<CreatePost />} />
         <Route
           path="/profile"
           element={

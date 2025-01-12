@@ -16,6 +16,7 @@ interface Post {
   id: string;
   title: string;
   price: number;
+  description: string;
   image: string;
   likes: number;
   comments: number;
@@ -317,30 +318,36 @@ const Profile = () => {
 
         {/* Right Section: Posts and Liked Posts */}
         <div className="col-md-8">
-          <div className="scroll-section shadow-sm">
+          {/* Liked Posts */}
+          <div className="scroll-section">
             <h5>Liked Posts</h5>
-            {likedPosts.length > 0 ? (
-              likedPosts.map((post) => (
-                <div key={post.id} className="mb-3">
-                  <PostCard {...post} />
-                </div>
-              ))
-            ) : (
-              <p className="text-muted">No liked posts found.</p>
-            )}
+            <div className="posts-grid">
+              {likedPosts.length > 0 ? (
+                likedPosts.map((post) => (
+                  <div key={post.id} className="post-card-container">
+                    <PostCard {...post} />
+                  </div>
+                ))
+              ) : (
+                <p className="text-muted">No liked posts found.</p>
+              )}
+            </div>
           </div>
 
-          <div className="scroll-section shadow-sm mt-4">
+          {/* User Posts */}
+          <div className="scroll-section">
             <h5>My Posts</h5>
-            {posts.length > 0 ? (
-              posts.map((post) => (
-                <div key={post.id} className="mb-3">
-                  <PostCard {...post} />
-                </div>
-              ))
-            ) : (
-              <p className="text-muted">No posts found.</p>
-            )}
+            <div className="posts-grid">
+              {posts.length > 0 ? (
+                posts.map((post) => (
+                  <div key={post.id} className="post-card-container">
+                    <PostCard {...post} />
+                  </div>
+                ))
+              ) : (
+                <p className="text-muted">No posts found.</p>
+              )}
+            </div>
           </div>
         </div>
       </div>

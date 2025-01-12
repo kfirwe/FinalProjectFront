@@ -1,0 +1,60 @@
+.post-card {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: transform 0.2s ease-in-out;
+}
+
+.post-card:hover {
+  transform: translateY(-5px); /* Lift effect on hover */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.post-image {
+  width: 100%;
+  height: 180px; /* Fixed height for consistency */
+  object-fit: cover;
+  border-radius: 5px 5px 0 0;
+}
+
+.placeholder-image {
+  width: 100%;
+  height: 180px;
+  background-color: #f0f0f0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #aaa;
+  font-size: 1rem;
+  border-radius: 5px 5px 0 0;
+}
+
+.card-title {
+  font-size: 1rem;
+  font-weight: bold;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis; /* Truncate long titles */
+}
+
+.card-text {
+  font-size: 0.9rem;
+  line-height: 1.2;
+  color: #555;
+}
+
+.card-text.text-truncate {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis; /* Truncate long descriptions */
+}
+
+.btn-light {
+  font-size: 0.9rem;
+  padding: 0.3rem 0.6rem;
+}
+
+.card-body {
+  padding: 1rem;
+}

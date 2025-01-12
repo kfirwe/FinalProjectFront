@@ -43,6 +43,11 @@ const Navbar = () => {
             {authContext?.isAuthenticated ? (
               <>
                 <li className="nav-item">
+                  <Link className="nav-link" to="/create-post">
+                    <i className="fas fa-plus-circle fa-lg"></i> Create Post
+                  </Link>
+                </li>
+                <li className="nav-item">
                   <Link className="nav-link" to="/profile">
                     <i className="fas fa-user fa-lg"></i> Profile
                   </Link>
